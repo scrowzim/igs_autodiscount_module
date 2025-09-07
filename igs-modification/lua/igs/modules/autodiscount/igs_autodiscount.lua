@@ -17,7 +17,7 @@ local THIS_TIMESTAMP = os.date('*t', os.time())
 
 local function CoFetch()
     local running = coroutine.running()
-    local thisYear = os.date("%Y") ---# local thisdate = os.date("%Y", os.time())
+    local thisYear = os.date("%Y")
 
     http.Fetch(Format("https://date.nager.at/api/v3/PublicHolidays/%s/RU", thisYear), function(response)
         coroutine.resume(running, response, response:match('%[{"') ~= nil)
@@ -147,3 +147,4 @@ elseif holiday and holiday_ds then
         )
     end
 end
+
